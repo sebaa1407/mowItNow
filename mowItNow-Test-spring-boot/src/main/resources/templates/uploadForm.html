@@ -1,0 +1,71 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+ 
+	<div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>
+ 
+	<div>
+		<form method="POST" enctype="multipart/form-data" action="/uploadForm">
+			<table>
+				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td></td><td><input type="submit" value="Run Mawers" /></td></tr>
+			</table>
+		</form>
+	</div>
+		<table th:if="${grassInfo}">
+
+				<td>width: <label type="text" th:text="${grassInfo.width}" /></td>
+				<td> length:<label type="text" th:text="${grassInfo.length}" /></td>
+			</table>
+ 
+ 
+		<br/>	<br/>
+	
+
+	<table>
+		<tr>
+			<th> First abscissa (x)</th>
+			<th> First ordinate (Y)</th>
+			<th> First direction</th>
+			<th> End abscissa (x)</th>
+			<th> End ordinate (Y)</th>
+			<th> End direction</th>
+		</tr>
+ 
+		
+				    <tr th:each="mowerMovingItinerary : ${mowersMovingItineraryList}">
+									
+						<td><label type="text" th:text="${mowerMovingItinerary.firstPosition.x}" /></td>
+						<td><label type="text" th:text="${mowerMovingItinerary.firstPosition.y}" /></td>
+						<td><label type="text" th:text="${mowerMovingItinerary.firstDirection}" /></td>
+						
+						<td><label type="text"  th:text="${mowerMovingItinerary.endPosition.x}" /></td>
+						<td><label type="text"  th:text="${mowerMovingItinerary.endPosition.y}" /></td>
+						<td><label type="text"  th:text="${mowerMovingItinerary.endDirection}" /></td>
+					</tr>	
+ 
+	 	</table>
+ 
+ 
+ 
+ 
+ 
+	<style>
+		table, td, th {    
+		    border: 1px solid #ddd;
+		    text-align: left;
+		}
+		
+		table {
+		    border-collapse: collapse;
+		    width: 100%;
+		}
+		
+		th, td {
+		    padding: 15px;
+		}
+</style>
+	
+</body>
+</html>
